@@ -1,0 +1,87 @@
+.root {
+    -fx-background-color: #DFDFDF;
+}
+
+#anchor_pane {
+    -fx-background-color: transparent;
+}
+
+#doctorAnchorPane {
+    -fx-background-color: white;
+}
+
+#doctorAnchorPane {
+    -fx-background-color: transparent;
+}
+
+.pane {
+    -fx-background-color: #EBF2F9;
+}
+.scene {
+    -fx-background-color: transparent, white 20%;
+}
+
+.button {
+    -fx-background-color: #EAEAEA;
+    -fx-border-radius: 5px;
+    -fx-border-width: 5px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: stretch;
+}
+
+#userIcon {
+    -fx-background-image: url("pic/user-silhouette.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+}
+
+#pwdIcon {
+    -fx-background-image: url("pic/key.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+
+}
+
+#loginLock {
+    -fx-background-size: stretch;
+    -fx-background-image: url("pic/locked-padlock.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+}
+
+#nodelist {
+    -fx-background-image: url("pic/key.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-background-size: stretch;
+}
+
+#serchIcon {
+    -fx-background-image: url("pic/magnifying-glass.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-background-size: stretch;
+    -fx-scale-x: -1;
+}
+
+#shutdownButton {
+    -fx-background-image: url("pic/power-signal.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-background-size: stretch;
+}
+
+#serchIcon1 {
+    -fx-background-image: url("pic/magnifying-glass.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-background-size: stretch;
+    -fx-scale-x: -1;
+}
+
+#shutdownButton1 {
+    -fx-background-image: url("pic/power-signal.png");
+    -fx-background-color: transparent;
+    -fx-focus-traversable: false;
+    -fx-background-size: stretch;
+}

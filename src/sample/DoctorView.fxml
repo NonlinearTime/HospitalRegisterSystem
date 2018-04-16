@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="doctorAnchorPane" prefHeight="653.0" prefWidth="808.0" stylesheets="@DoctorStytles.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DoctorViewController">
+   <children>
+      <JFXTabPane layoutX="52.0" layoutY="22.0" prefHeight="563.0" prefWidth="808.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab text="PatientsList">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="614.0" prefWidth="808.0">
+                     <children>
+                        <JFXTreeTableView fx:id="patientsTable" layoutY="40.0" prefHeight="527.0" prefWidth="808.0" />
+                        <GridPane fx:id="doctorGridPane1" prefHeight="39.0" prefWidth="808.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="89.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="89.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="159.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="109.0" text="BeginTime">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="109.0" text="EndTime" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
+                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
+                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
+                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
+                           </children>
+                        </GridPane>
+                        <JFXTextField fx:id="serchText" alignment="BOTTOM_LEFT" focusColor="#535761" layoutX="559.0" layoutY="581.0" opacity="0.69" prefHeight="31.0" prefWidth="191.0" unFocusColor="#b5b8b9">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="serchIcon" defaultButton="true" layoutX="762.0" layoutY="581.0" onAction="#onSearchButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <JFXButton fx:id="shutdownButton" layoutX="14.0" layoutY="581.0" onAction="#onShutdownButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <Label fx:id="timeText" alignment="CENTER" layoutX="46.0" layoutY="581.0" prefHeight="33.0" prefWidth="214.0" text="2018-4-16 12:50:26">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="DoctorsList">
+              <content>
+                <AnchorPane>
+                     <children>
+                        <JFXTreeTableView fx:id="incomeTable" layoutY="40.0" prefHeight="527.0" prefWidth="808.0" />
+                        <GridPane fx:id="doctorGridPane" prefHeight="39.0" prefWidth="808.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="89.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="89.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="159.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="159.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="109.0" text="BeginTime">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="133.0" text="EndTime" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
+                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
+                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
+                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
+                           </children>
+                        </GridPane>
+                        <JFXTextField fx:id="serchText1" alignment="BOTTOM_LEFT" focusColor="#535761" layoutX="559.0" layoutY="581.0" opacity="0.69" prefHeight="31.0" prefWidth="191.0" unFocusColor="#b5b8b9">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXButton fx:id="serchIcon1" defaultButton="true" layoutX="762.0" layoutY="581.0" onAction="#onSearchButton1Clicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <JFXButton fx:id="shutdownButton1" layoutX="14.0" layoutY="581.0" onAction="#onShutdownButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <Label fx:id="timeText1" alignment="CENTER" layoutX="46.0" layoutY="581.0" prefHeight="33.0" prefWidth="214.0" text="2018-4-16 12:50:26">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+   </children>
+</AnchorPane>
