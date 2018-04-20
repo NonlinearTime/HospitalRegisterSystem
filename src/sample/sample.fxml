@@ -40,19 +40,31 @@
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
                   <Label alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="57.0" text="医生姓名" textFill="#727070" />
-                  <JFXTextField fx:id="doctorName" focusColor="#535761" opacity="0.69" unFocusColor="#b5b8b9" />
+                  <JFXComboBox fx:id="doctorName" editable="true" focusColor="#535761" prefHeight="3.0" prefWidth="140.0" unFocusColor="#b5b8b9">
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </JFXComboBox>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
                   <Label alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="57.0" text="号种类别" textFill="#727070" />
-                  <JFXTextField fx:id="regType" focusColor="#535761" opacity="0.69" unFocusColor="#b5b8b9" />
+                  <JFXComboBox fx:id="regType" editable="true" focusColor="#535761" prefHeight="3.0" prefWidth="140.0" unFocusColor="#b5b8b9">
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </JFXComboBox>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label alignment="BOTTOM_LEFT" prefHeight="22.0" prefWidth="57.0" text="号种名称" textFill="#727070" />
-                  <JFXTextField fx:id="regName" focusColor="#535761" opacity="0.69" unFocusColor="#b5b8b9" />
+                  <JFXComboBox fx:id="regName" editable="true" focusColor="#535761" prefHeight="3.0" prefWidth="140.0" unFocusColor="#b5b8b9">
+                     <effect>
+                        <ColorAdjust />
+                     </effect>
+                  </JFXComboBox>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -91,8 +103,9 @@
             <Font size="48.0" />
          </font>
       </Label>
-      <JFXButton fx:id="enterButton" buttonType="RAISED" defaultButton="true" layoutX="143.0" layoutY="407.0" onAction="#onMousePressed" prefHeight="24.0" prefWidth="65.0" ripplerFill="#a5a7a8" text="确定" textFill="#727070" />
+      <JFXButton fx:id="enterButton" buttonType="RAISED" defaultButton="true" layoutX="143.0" layoutY="407.0" onAction="#onEnterButtonClicked" prefHeight="24.0" prefWidth="65.0" ripplerFill="#a5a7a8" text="确定" textFill="#727070" />
       <JFXButton fx:id="clearButton" buttonType="RAISED" layoutX="268.0" layoutY="407.0" onAction="#onClearButtonClicked" prefHeight="24.0" prefWidth="65.0" ripplerFill="#a5a7a8" text="清除" textFill="#727070" />
       <JFXButton fx:id="quitButton" buttonType="RAISED" layoutX="402.0" layoutY="407.0" onAction="#onQuitButtonClicked" prefHeight="24.0" prefWidth="65.0" ripplerFill="#a5a7a8" text="退出" textFill="#727070" />
+      <Label fx:id="lableCondition" alignment="CENTER" layoutX="161.0" layoutY="358.0" prefHeight="24.0" prefWidth="279.0" textFill="#727070" />
    </children>
 </AnchorPane>

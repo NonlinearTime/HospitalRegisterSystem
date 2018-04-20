@@ -46,10 +46,10 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
-                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
-                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
-                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
+                              <JFXDatePicker fx:id="patientEndDatePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
+                              <JFXDatePicker fx:id="patientBeginDatePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
+                              <JFXTimePicker fx:id="patientBeginTimePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
+                              <JFXTimePicker fx:id="patientEndTimePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
                            </children>
                         </GridPane>
                         <JFXTextField fx:id="serchText" alignment="BOTTOM_LEFT" focusColor="#535761" layoutX="559.0" layoutY="581.0" opacity="0.69" prefHeight="31.0" prefWidth="191.0" unFocusColor="#b5b8b9">
@@ -57,7 +57,7 @@
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton fx:id="serchIcon" defaultButton="true" layoutX="762.0" layoutY="581.0" onAction="#onSearchButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <JFXButton fx:id="serchIcon" layoutX="762.0" layoutY="581.0" onAction="#onSearchButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
                         <JFXButton fx:id="shutdownButton" layoutX="14.0" layoutY="581.0" onAction="#onShutdownButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
                         <Label fx:id="timeText" alignment="CENTER" layoutX="46.0" layoutY="581.0" prefHeight="33.0" prefWidth="214.0" text="2018-4-16 12:50:26">
                            <font>
@@ -70,7 +70,7 @@
             </Tab>
             <Tab text="DoctorsList">
               <content>
-                <AnchorPane>
+                <AnchorPane prefHeight="627.0" prefWidth="755.0">
                      <children>
                         <JFXTreeTableView fx:id="incomeTable" layoutY="40.0" prefHeight="527.0" prefWidth="808.0" />
                         <GridPane fx:id="doctorGridPane" prefHeight="39.0" prefWidth="808.0">
@@ -96,10 +96,10 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
-                              <JFXDatePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
-                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
-                              <JFXTimePicker defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
+                              <JFXDatePicker fx:id="incomeEndDatePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="219.0" GridPane.columnIndex="4" />
+                              <JFXDatePicker fx:id="incomeBeginDatePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="183.0" GridPane.columnIndex="1" />
+                              <JFXTimePicker fx:id="incomeBeginTimePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="2" />
+                              <JFXTimePicker fx:id="incomeEndTimePicker" defaultColor="#56d7ea" prefHeight="29.0" prefWidth="182.0" GridPane.columnIndex="5" />
                            </children>
                         </GridPane>
                         <JFXTextField fx:id="serchText1" alignment="BOTTOM_LEFT" focusColor="#535761" layoutX="559.0" layoutY="581.0" opacity="0.69" prefHeight="31.0" prefWidth="191.0" unFocusColor="#b5b8b9">
@@ -107,7 +107,7 @@
                               <Font size="16.0" />
                            </font>
                         </JFXTextField>
-                        <JFXButton fx:id="serchIcon1" defaultButton="true" layoutX="762.0" layoutY="581.0" onAction="#onSearchButton1Clicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
+                        <JFXButton fx:id="serchIcon1" layoutX="762.0" layoutY="581.0" onAction="#onSearchButton1Clicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
                         <JFXButton fx:id="shutdownButton1" layoutX="14.0" layoutY="581.0" onAction="#onShutdownButtonClicked" prefHeight="32.0" prefWidth="32.0" ripplerFill="#37baf2" text=" " />
                         <Label fx:id="timeText1" alignment="CENTER" layoutX="46.0" layoutY="581.0" prefHeight="33.0" prefWidth="214.0" text="2018-4-16 12:50:26">
                            <font>

@@ -85,3 +85,7 @@
     -fx-focus-traversable: false;
     -fx-background-size: stretch;
 }
+
+/*.table-row {*/
+    /*-fx-background-color: white;*/
+/*}*/
