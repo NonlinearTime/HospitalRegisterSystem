@@ -10,6 +10,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -32,6 +34,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.stream.Stream;
 
 public class Controller implements ControlledStage , Initializable {
     private StageController patientController;
@@ -168,7 +171,31 @@ public class Controller implements ControlledStage , Initializable {
                     String[] res = newValue.split(" ");
                     if (res.length > 1)  {
                         localDeptName.setValue(newValue);
-                        Platform.runLater(() -> deptName.getEditor().setText(newValue.substring(7,10).trim()));
+                        String filter = res[0].toString();
+                        Platform.runLater(() -> {
+                            deptName.getEditor().setText(res[1]);
+                            try {
+                                ResultSet rs = statement.executeQuery("SELECT * FROM T_KSYS WHERE KSBH ='" + filter +"'");
+                                doctorName.getItems().clear();
+                                while (rs.next()) {
+                                    String tmp = rs.getString("YSBH") + " " + rs.getString("YSMC") + " " + rs.getString("PYZS");
+                                    doctorName.getItems().add(tmp);
+                                }
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            try {
+                                ResultSet rs = statement.executeQuery("SELECT DISTINCT HZMC, PYZS FROM T_HZXX WHERE KSBH ='" + filter +"'");
+                                regName.getItems().clear();
+                                while (rs.next()) {
+                                    String tmp = rs.getString("HZMC") + " " + rs.getString("PYZS");
+                                    regName.getItems().add(tmp);
+                                }
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            doctorName.setDisable(false);
+                        });
                     }
                 }
             }
@@ -180,8 +207,28 @@ public class Controller implements ControlledStage , Initializable {
                 if (newValue != null) {
                     String[] res = newValue.split(" ");
                     if (res.length > 1) {
+                        String filter = res[1];
                         localDoctorName.setValue(newValue);
-                        Platform.runLater(() -> doctorName.getEditor().setText(res[1]));
+                        Platform.runLater(() -> {
+                            doctorName.getEditor().setText(res[1]);
+                            try {
+                                ResultSet rs = statement.executeQuery("SELECT * FROM T_KSYS");
+                                regType.getItems().clear();
+                                while (rs.next()) {
+                                    boolean sfzj = rs.getBoolean("SFZJ");
+                                    System.out.println(rs.getString("YSMC"));
+                                    String tmp = "";
+                                    if (rs.getString("YSMC").equals(filter.trim())) {
+                                        tmp = sfzj ? "专家号" : "普通号";
+                                        regType.getItems().add(tmp);
+                                    }
+                                }
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+                            regType.setDisable(false);
+                            regName.setDisable(false);
+                        });
                     }
                 }
             }
@@ -195,7 +242,7 @@ public class Controller implements ControlledStage , Initializable {
                     if (res.length > 1) {
                         localRegName.setValue(newValue);
                         Platform.runLater(() -> {
-                            regName.getEditor().setText(newValue.substring(0,2));
+                            regName.getEditor().setText(res[0]);
                             System.out.println(localDeptName.getValue().substring(0,6));
                             String KSBH = localDeptName.getValue().substring(0,6);
                             String YSBH = localDoctorName.getValue().substring(0,6);
@@ -228,38 +275,6 @@ public class Controller implements ControlledStage , Initializable {
             }
         });
 
-//        regName.getEditor().setOnMouseExited(new EventHandler<javafx.scene.input.MouseEvent>() {
-//            @Override
-//            public void handle(javafx.scene.input.MouseEvent event) {
-//                System.out.println(localDeptName.getValue().substring(0,6));
-//                String KSBH = localDeptName.getValue().substring(0,6);
-//                String YSBH = localDoctorName.getValue().substring(0,6);
-//                String HZLB = regType.getEditor().getText().toString();
-//                String HZMC = regName.getEditor().getText().toString();
-//                boolean SFZJ = HZLB.equals("专家号");
-//                try {
-//                    ResultSet rs = statement.executeQuery("SELECT * FROM T_HZXX");
-////                    ResultSet rs = statement.executeQuery("SELECT * FROM T_HZXX WHERE HZMC = '肝病'");
-//                    while (rs.next()) {
-//                        String hzmc = rs.getString("HZMC");
-//                        String ksbh = rs.getString("KSBH");
-//                        boolean sfzj = rs.getBoolean("SFZJ");
-//                        double tmp = rs.getDouble("GHFY");
-//                        if(HZMC.equals(hzmc) && sfzj == SFZJ && KSBH.equals(ksbh)) {
-//                            if (tmp > Main.YCJE.getValue()) {
-//                                lableCondition.setText("您的账户余额为:" + String.valueOf(Main.YCJE.getValue()) + ", 余额不足，请补齐费用！");
-//                                totalMount.setDisable(false);
-//                            }
-//                            rightMount.setText(String.valueOf(tmp));
-//                        }
-//                    }
-//                } catch (SQLException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-
-
         totalMount.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -278,17 +293,9 @@ public class Controller implements ControlledStage , Initializable {
             }
         });
 
-//        totalMount.setOnMouseExited(new EventHandler<javafx.scene.input.MouseEvent>() {
-//            @Override
-//            public void handle(javafx.scene.input.MouseEvent event) {
-//                if (totalMount.getText().length() > 0) retMount.setText(String.valueOf(Main.YCJE.getValue() + Double.parseDouble(totalMount.getText().toString()) - Double.parseDouble(rightMount.getText().toString())));
-//            }
-//        });
-
         new ComboListAutoComplete<String>(deptName);
         new ComboListAutoComplete<String>(doctorName);
         new ComboListAutoComplete<String>(regName);
-
 
         Main.hasMoney.addListener(new ChangeListener<Boolean>() {
             @Override
@@ -304,6 +311,9 @@ public class Controller implements ControlledStage , Initializable {
         rightMount.setEditable(false);
         regNum.setEditable(false);
         retMount.setEditable(false);
+        doctorName.setDisable(true);
+        regType.setDisable(true);
+        regName.setDisable(true);
         Main.YCJE.addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -333,6 +343,9 @@ public class Controller implements ControlledStage , Initializable {
         retMount.clear();
         regNum.clear();
         deptName.getEditor().clear();
+        doctorName.setDisable(true);
+        regType.setDisable(true);
+        regName.setDisable(true);
     }
 
     @FXML
@@ -353,6 +366,7 @@ public class Controller implements ControlledStage , Initializable {
             if(HZMC.equals(hzmc) && sfzj == SFZJ) {
                 HZBH = rs.getString("HZBH");
                 GHRS = rs.getInt("GHRS");
+                System.out.println(GHRS);
             }
         }
 
